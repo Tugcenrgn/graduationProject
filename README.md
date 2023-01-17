@@ -1,1 +1,1 @@
-# BitirmeProjesi çalışmam
+# BitirmeProjesi
