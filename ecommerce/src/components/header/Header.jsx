@@ -5,7 +5,7 @@ import logo from "../../assets/sp&save.png";
 const Header = () => {
   return (
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        <div class="nav-div container-fluid">
           <a class="navbar-brand" href="#">
             <img className="logo" src={logo} alt="logo" />
           </a>
