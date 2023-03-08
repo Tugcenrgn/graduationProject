@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< Updated upstream
 import "./Footer.css";
 
 const Footer = () =>{
@@ -10,3 +11,10 @@ const Footer = () =>{
 }
 
 export default Footer;
+=======
+
+const Footer = () => {
+  return <>Footer</>;
+};
+export default Footer;
+>>>>>>> Stashed changes

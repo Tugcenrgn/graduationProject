@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< Updated upstream
 import "./Header.css";
 import logo from "../../assets/sp&save.png";
 
@@ -84,4 +85,10 @@ const Header = () => {
   );
 };
 
+=======
+
+const Header = () => {
+  return <>Header</>;
+};
+>>>>>>> Stashed changes
 export default Header;
