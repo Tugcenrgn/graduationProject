@@ -86,9 +86,10 @@ const Header = () => {
               <Link class="nav-item nav-link" to="/Register">
                 Register
               </Link>
-              <Link class="nav-item nav-link d-flex" to="/Cart">
-                  <img src={cart} class="shopping-cart" alt="cart" />
-                  <p>0</p>
+
+              <Link class="nav-item nav-link d-flex cart-link" to="/Cart">
+                <img src={cart} class="shopping-cart" alt="cart" />
+                <p class="cart-number">0</p>
               </Link>
             </span>
           </div>

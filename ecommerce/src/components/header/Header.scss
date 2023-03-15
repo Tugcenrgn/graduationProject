@@ -14,3 +14,16 @@
     padding: 0;
     padding-left: 10px;
 }
+
+.cart-link{
+    position: relative;
+    align-items: center;
+    text-align: center;
+    width: 2.9em;
+}
+
+.cart-number{
+    position:absolute;
+    right: 0;
+    top: 0;
+}
