@@ -1,5 +1,9 @@
 import React from "react";
 
+//get the current year
+const date = new Date();
+const year = date.getFullYear();
+
 const Footer = () => {
   return (
     <div class="text-center text-lg-start bg-light text-muted">
@@ -112,7 +116,7 @@ const Footer = () => {
       <div
         class="text-center p-4"
         style={{backgroundColor: "#0010"}}>
-        © 2021 Copyright:
+        © {year} Copyright:
         <a class="text-reset fw-bold" href="https://mdbootstrap.com/">
           MDBootstrap.com
         </a>
