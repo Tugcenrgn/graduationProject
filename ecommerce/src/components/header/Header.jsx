@@ -77,13 +77,13 @@ const Header = () => {
           </form>
           <div class="navbar-nav m-auto mb-2 mb-lg-0">
             <span class="navbar-nav ">
-              <Link class="nav-item nav-link" to="/Admin">
+              <Link class="nav-item nav-link" to="/admin">
                 Admin
               </Link>
-              <Link class="nav-item nav-link" to="/Login">
+              <Link class="nav-item nav-link" to="/login">
                 Login
               </Link>
-              <Link class="nav-item nav-link" to="/Register">
+              <Link class="nav-item nav-link" to="/register">
                 Register
               </Link>
 

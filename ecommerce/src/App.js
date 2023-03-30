@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import Home from "./pages/homePage/Home";
+
+import {Home, Contact, Register, Login, Reset} from "./pages";
 
 console.log("hello world!");
 
@@ -12,6 +13,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/reset" element={<Reset/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
