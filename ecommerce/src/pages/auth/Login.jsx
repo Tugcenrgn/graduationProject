@@ -9,7 +9,7 @@ const Login = () => {
       <div class="container pt-5">
         <div class="row">
           <div className="col col-6">
-            <img className="login-vector" src={loginVector} alt="yüklenemedi" />
+            <img className="auth-vector" src={loginVector} alt="yüklenemedi" />
           </div>
           <div className="col col-4 d-flex justify-content-center align-items-center">
             <form className="login-form align-items-center">
