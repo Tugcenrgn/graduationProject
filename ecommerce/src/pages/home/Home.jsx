@@ -1,25 +1,35 @@
-import React from 'react';
-import './Home.css';
-import loginVector from "../../assets/loginVector.png";
+import React from "react";
+import "./Home.css";
+import Carousel from "../../components/carousel/Carousel";
+import ProductCard from "../../components/productCard/ProductCard";
 
 const Home = () => {
   return (
-       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div className="carousel-inner">
-    <div className="carousel-item active">
-      <img className="d-block w-100" src={loginVector} alt="First slide"/>
-    </div>
-    <div className="carousel-item">
-      <img className="d-block w-100" src="#" alt="Second slide"/>
-    </div>
-    <div className="carousel-item">
-      <img className="d-block w-100" src={loginVector} alt="Third slide"/>
-    </div>
-  </div>
-</div>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <Carousel />
+        </div>
+      </div>
+      <div className="row pt-5">
+        <div className="col col-lg-3 col-12">
+          <ProductCard />
+        </div>
 
+        <div className="col col-lg-3 col-12">
+          <ProductCard />
+        </div>
+
+        <div className="col col-lg-3 col-12">
+          <ProductCard />
+        </div>
+
+        <div className="col col-lg-3 col-12">
+          <ProductCard />
+        </div>
+      </div>
+    </div>
   );
-}
-
+};
 
 export default Home;
