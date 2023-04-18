@@ -49,6 +49,7 @@ const Login = () => {
                     Can't check this
                   </label>
                 </div>
+                <a href="/reset" className="text-muted">Forgot your password?</a>
               </div>
               <button type="submit" class="btn btn-primary">
                 Submit
