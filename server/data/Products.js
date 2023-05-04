@@ -1,18 +1,138 @@
 const products = [
-    {
-        _id: "1",
-        name: "tugce",
-        surname: "ergen",
-        mail: "ergen@gmail.com",
-        password: "asdf"
-    },
-    {
-        _id: "2",
-        name: "tugce",
-        surname: "ergen",
-        mail: "ergen@gmail.com",
-        password: "asdf"
-    },
-]
+  {
+    _id: "1",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product1.png",
+  },
+  {
+    _id: "2",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product2.png",
+  },
+  {
+    _id: "3",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product3.png",
+  },
+  {
+    _id: "4",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product4.png",
+  },
+  {
+    _id: "5",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product5.png",
+  },
+  {
+    _id: "6",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product6.png",
+  },
+  {
+    _id: "7",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product7.png",
+  },
+  {
+    _id: "8",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product8.png",
+  },
+  {
+    _id: "9",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product9.png",
+  },
+  {
+    _id: "10",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product10.png",
+  },
+  {
+    _id: "11",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product11.png",
+  },
+  {
+    _id: "12",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product12.png",
+  },
+  {
+    _id: "13",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product13.png",
+  },
+  {
+    _id: "14",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product14.png",
+  },
+  {
+    _id: "15",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product15.png",
+  },
+  {
+    _id: "16",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product16.png",
+  },
+  {
+    _id: "17",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product17.png",
+  },
+  {
+    _id: "18",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product18.png",
+  },
+  {
+    _id: "19",
+    name: "T-shirt",
+    info: "ergen",
+    price: "124",
+    image: "/product19.png",
+  },
+  
+];
 
 export default products;
