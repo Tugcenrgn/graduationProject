@@ -1,11 +1,24 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./ProductCard.scss";
 import { ReactComponent as HeartFill } from "../../assets/heart-fill.svg";
 
 const ProductCard = (props) => {
+  let navigate = useNavigate(props.navigate);
+  const routeChange = (p) => {
+    let path = p;
+    navigate(path);
+  };
+
   return (
-    <div class="card align-items-center">
+    <div
+      class="card align-items-center"
+      style={{"cursor": "pointer"}}
+      onClick={() => {
+        routeChange(`/products/${props.id}`);
+      }}>
       <img src={props.img} class="card-img-top" alt="product" />
+
       <div class="card-body">
         <div className="row">
           <div className="col">

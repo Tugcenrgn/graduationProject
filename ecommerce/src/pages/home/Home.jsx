@@ -1,21 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Carousel from "../../components/carousel/Carousel";
 import ProductCard from "../../components/productCard/ProductCard";
-import axios from "axios";
-
+import { useDispatch, useSelector } from "react-redux";
+import SingleProduct from "../singleProduct/SingleProduct";
+import { listProduct } from "../../redux/Actions/ProductActions";
+import Loading from "../../components/loadingError/Loading";
+import Message from "../../components/loadingError/Error";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    const fetchProducts = async() =>{
-      const {data} = await axios.get("/api/products")
-      setProducts(data)
-    }
-
-    fetchProducts();
-  }, []);
+    dispatch(listProduct());
+  }, [dispatch]);
 
   return (
     <div className="container">
@@ -25,11 +26,26 @@ const Home = () => {
         </div>
       </div>
       <div className="row pt-5">
-        {products.map((product) => (
-          <div className="col col-lg-3 col-12" key={product._id}>
-            <ProductCard img={product.image} info={product.info} price={product.price} />
+        {loading ? (
+          <div className="mb-5">
+            <Loading />
           </div>
-        ))}
+        ) : error ? (
+          <Message variant="alert-danger">{error}</Message>
+        ) : (
+          <>
+            {products.map((product) => (
+              <div className="col col-lg-3 col-12" key={product._id}>
+                <ProductCard
+                  id={product._id}
+                  img={product.image}
+                  info={product.info}
+                  price={product.price}
+                />
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
