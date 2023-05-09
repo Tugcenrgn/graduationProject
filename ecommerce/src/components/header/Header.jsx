@@ -89,7 +89,7 @@ const Header = () => {
                   Register
                 </Link>
 
-                <Link class="nav-item nav-link d-flex cart-link" to="/Cart">
+                <Link class="nav-item nav-link d-flex cart-link" to="/cart">
                   <img src={cart} class="shopping-cart" alt="cart" />
                   <p class="cart-number">0</p>
                 </Link>

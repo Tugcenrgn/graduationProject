@@ -5,7 +5,7 @@ const products = [
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit",
     price: 124,
     countInStock: 0,
-    rating: 3.5,
+    rating: 1.5,
     numReviews: 3,
   },
   {
@@ -42,7 +42,7 @@ const products = [
     price: 124,
     countInStock: 0,
     rating: 3.5,
-    numReviews: 3,
+    numReviews: 5,
   },
   {
     name: "T-shirt",
@@ -50,7 +50,7 @@ const products = [
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit",
     price: 124,
     countInStock: 0,
-    rating: 3.5,
+    rating: 2.5,
     numReviews: 3,
   },
   {
@@ -59,7 +59,7 @@ const products = [
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit",
     price: 124,
     countInStock: 0,
-    rating: 3.5,
+    rating: 1.5,
     numReviews: 3,
   },
   {
@@ -68,8 +68,8 @@ const products = [
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit",
     price: 124,
     countInStock: 0,
-    rating: 3.5,
-    numReviews: 3,
+    rating: 4.5,
+    numReviews: 5,
   },
   {
     name: "T-shirt",
