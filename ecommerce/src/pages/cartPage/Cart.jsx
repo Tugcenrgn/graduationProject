@@ -23,7 +23,9 @@ const Cart = ({ match }) => {
   }, [dispatch, productId, qty]);
 
   const checkOutHandler = () => {
-    history("/login?redirect=shipping");
+    history(
+    `/login?redirect=/shipping`);
+    console.log("hollo")
   }
 
   const removeFromCartHandle = (id) => {
@@ -40,9 +42,14 @@ const Cart = ({ match }) => {
           <div className="alert alert-info text-center mt-3">
             Your cart is empty.
             <Link
-              className="btn btn-success mx-5 px-5 py-3"
+              className="btn mx-5 px-5 py-3 text-light "
               to="/"
-              style={{ fontSize: "12px" }}>
+              style={{
+                fontSize: "12px",
+                "background-image": "linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%)",
+                "font-weight": "bold",
+                "font-size": ".9em",
+              }}>
               SHOP NOW
             </Link>
           </div>
@@ -56,56 +63,76 @@ const Cart = ({ match }) => {
             </div>
             {/*Cart Item*/}
             {cartItems.map((item) => (
-              <div className="cart-item row">
+              <div className="cart-item row d-flex flex-row pt-3 mt-2 justify-content-center">
+                {/* lg delete icon */}
                 <div
-                onClick={() => removeFromCartHandle(item.product)}
-                style={{cursor: 'pointer'}}
-                className="remove-button d-flex justify-content-center align-items-center">
+                  onClick={() => removeFromCartHandle(item.product)}
+                  style={{ cursor: "pointer" }}
+                  className=" w-100 col-1 d-flex remove-button">
+                  {/* d-none d-sm-block */}
                   <i className="fas fa-times"></i>
                 </div>
-                <div className="cart-image col-md-3 ">
-                  <img className="h-50" src={item.image} alt={item.name} />
-                </div>
-                <div className="cart-text col-md-5 d-flex align-items-center ">
-                  <Link to={`/products/${item.product}`}>
-                    <h4>{item.name}</h4>
-                  </Link>
-                </div>
-                <div className="cart-qty col-md-2 col-sm-5 mt-md-5 mt-3 mt-md-0 d-flex">
-                  <h6>Quantitiy</h6>
-                  <select
-                    value={item.qty}
-                    onChange={(e) =>
-                      dispatch(addToCart(item.product, Number(e.target.value)))
-                    }>
-                    {[...Array(item.countInStock).keys()].map((x) => (
-                      <option key={x + 1} value={x + 1}>
-                        {x + 1}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="cart-price mt-3 mt-md-0 col-md-2 align-items-sm-end">
-                  <h6>Price</h6>
-                  <h4>{item.price}TL</h4>
+                <div className="row w-100 ">
+                  <div className="cart-image col-md-2 col-5  d-flex  h-50 justify-content-center ">
+                    <img
+                      className=" img-fluid rounded"
+                      src={item.image}
+                      alt={item.name}
+                    />
+                  </div>
+                  {/* sm delete icon
+                  <div
+                    onClick={() => removeFromCartHandle(item.product)}
+                    style={{ cursor: "pointer" }}
+                    className="d-block d-sm-none col-1 d-flex remove-button ">
+                    <i className="fas fa-times"></i>
+                  </div> */}
+                  <div className="cart-text col-md-6 col-3 d-flex align-items-center  h-50 ">
+                    <Link
+                      className="text-decoration-none"
+                      to={`/products/${item.product}`}>
+                      <h2 className="text-dark ">{item.name}</h2>
+                    </Link>
+                  </div>
+                  <div className="cart-price  mt-md-0 col-2 d-flex justify-content-end align-items-center   h-50 ">
+                    <h4>{item.price}TL</h4>
+                  </div>
+                  <div className="cart-qty col-md-2 col-2 d-flex gap-3 flex-row justify-content-end align-items-center h-50">
+                    <select
+                      className="border-0 shadow-sm"
+                      value={item.qty}
+                      onChange={(e) =>
+                        dispatch(
+                          addToCart(item.product, Number(e.target.value))
+                        )
+                      }>
+                      {[...Array(item.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
             ))}
 
             {/*End of cart items*/}
-            <div className="total">
-              <span className="sub">total:</span>
-              <span className="total-price">{total}TL</span>
+            <div className="total mt-4 d-flex justify-content-end">
+              <h2>
+                <span className="badge sub">total: {total}TL</span>
+              </h2>
+              
             </div>
             <hr />
             <div className="cart-buttons d-flex align-items-center row">
-              <Link to="/" className="col-md-6">
-                <button>Continue to shopping</button>
+              <Link to="/" className="col-6 text-decoration-none">
+                <button className="button">Continue to shopping</button>
               </Link>
 
               {total > 0 && (
-                <div className="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
-                  <button onClick={checkOutHandler}>
+                <div className="col-6 d-flex  justify-content-end mt-md-0">
+                  <button className="button" onClick={checkOutHandler}>
                     Checkout
                   </button>
                 </div>

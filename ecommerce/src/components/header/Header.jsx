@@ -3,11 +3,20 @@ import "./Header.scss";
 import logo from "../../assets/sp&save.png";
 import cart from "../../assets/shopping-cart.png";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/Actions/UserActions";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const cartCount = useSelector((state) => state.cart);
   const { cartItems } = cartCount;
+   const userLogin = useSelector((state) => state.userLogin);
+   const { userInfo } = userLogin;
+
+   const logoutHandler =() => {
+    dispatch(logout());
+   }
+
   return (
     <div className="container border-bottom">
       <nav class="navbar navbar-expand-lg bg-body-tertiar">
@@ -37,35 +46,10 @@ const Header = () => {
                   Link
                 </Link>
               </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
+              <li class="nav-item">
+                <Link class="nav-link" to="/">
+                  About Us
+                </Link>
               </li>
             </ul>
             <form class="d-flex w-50 justify-content-center form" role="search">
@@ -81,15 +65,54 @@ const Header = () => {
             </form>
             <div class="navbar-nav m-auto mb-2 mb-lg-0">
               <span class="navbar-nav ">
-                <Link class="nav-item nav-link" to="/admin">
-                  Admin
-                </Link>
-                <Link class="nav-item nav-link" to="/login">
+                {userInfo ? (
+                  <div className="btn-group dropdown">
+                    <button
+                      type="button"
+                      className="name-button dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false">
+                      Hi, {userInfo.name}
+                    </button>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item text-light" to="/profile">
+                        Profile
+                      </Link>
+                      <Link
+                        className="dropdown-item text-light"
+                        to="#"
+                        onClick={logoutHandler}>
+                        Logout
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="btn-group dropdown">
+                    <button
+                      type="button"
+                      className="name-button dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false">
+                      <i className="fas fa-user"></i>
+                    </button>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item text-light" to="/login">
+                        Login
+                      </Link>
+                      <Link className="dropdown-item text-light" to="/register">
+                        Register
+                      </Link>
+                    </div>
+                  </div>
+                )}
+                {/* <Link class="nav-item nav-link" to="/login">
                   Login
                 </Link>
                 <Link class="nav-item nav-link" to="/register">
                   Register
-                </Link>
+                </Link> */}
 
                 <Link class="nav-item nav-link d-flex cart-link" to="/cart">
                   <img src={cart} class="shopping-cart" alt="cart" />
@@ -100,7 +123,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <nav class="navbar navbar-expand-lg bg-body-tertiar">
+      {/* <nav class="navbar navbar-expand-lg bg-body-tertiar">
         <div class="nav-div container-fluid ">
           <div class="navbar-nav m-auto mb-2 mb-lg-0  w-100">
             <span class="navbar-nav w-100">
@@ -130,7 +153,7 @@ const Header = () => {
             </span>
           </div>
         </div>
-      </nav>
+      </nav> */}
     </div>
   );
 };

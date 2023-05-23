@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import "./Home.css";
 import Carousel from "../../components/carousel/Carousel";
 import ProductCard from "../../components/productCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import SingleProduct from "../singleProduct/SingleProduct";
 import { listProduct } from "../../redux/Actions/ProductActions";
 import Loading from "../../components/loadingError/Loading";
 import Message from "../../components/loadingError/Error";
@@ -35,12 +34,16 @@ const Home = () => {
         ) : (
           <>
             {products.map((product) => (
-              <div className="col col-lg-3 col-12" key={product._id}>
+              <div className="col col-lg-3 col-12 card-group" key={product._id}>
                 <ProductCard
                   id={product._id}
                   img={product.image}
-                  info={product.info}
+                  name={product.name}
+                  description={product.description}
                   price={product.price}
+                  rating={product.rating}
+                  numReviews={product.numReviews}
+                  countInStock={product.countInStock}
                 />
               </div>
             ))}

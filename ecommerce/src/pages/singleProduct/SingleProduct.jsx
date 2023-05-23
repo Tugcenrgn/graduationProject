@@ -12,7 +12,7 @@ const SingleProduct = ({ match }) => {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productId = useParams().id;
-   const history = useNavigate();
+  const history = useNavigate();
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -25,7 +25,6 @@ const SingleProduct = ({ match }) => {
     e.preventDefault();
     history(`/cart/${productId}?qty=${qty}`);
     console.log("eklendi");
-    
   };
 
   return (
@@ -36,44 +35,59 @@ const SingleProduct = ({ match }) => {
         <Message variant="alert-danger">{error}</Message>
       ) : (
         <>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="single-image">
-                <img src={product.image} alt={product.name} className="w-50" />
-              </div>
+          <div className="row d-flex flex-row mt-5 ">
+            <div
+              className="col-12 col-md-6  d-flex justify-content-center "
+              style={{ "max-height": "400px" }}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-75 object-fit-cover img-thumbnail rounded"
+              />
             </div>
-            <div className="col-md-6">
-              <div className="product-dtl">
-                <div className="product-info">
-                  <div className="product-name"> {product.name}</div>
+            <div className="col-12 col-md-6  d-flex justify-content-between">
+              <div className="w-100 h-100 ">
+                <div className="product-info mt-3 mb-3">
+                  <h1 className="product-name"> {product.name}</h1>
                 </div>
                 <p>{product.description}</p>
 
-                <div className="product-count col-lg-7">
+                <div className="product-count col-lg-7 w-100 ">
                   <div className="flex-box d-flex justify-content-between align-items-center">
-                    <h6>Price</h6>
-                    <span>{product.price}TL</span>
+                    <h4>Price</h4>
+                    <h4>{product.price}TL</h4>
                   </div>
                   <div className="flex-box d-flex justify-content-between align-items-center">
-                    <h6>status</h6>
+                    <h4>status</h4>
                     {product.countInStock > 0 ? (
-                      <span>In stock</span>
+                      <h6>
+                        <span
+                          class="badge text-light"
+                          style={{ "background-color": "orange" }}>
+                          In stock
+                        </span>
+                      </h6>
                     ) : (
-                      <span>out of stock</span>
+                      <h6>
+                        <span class="badge text-light">
+                          out of stock
+                        </span>
+                      </h6>
                     )}
                   </div>
                   <div className="flex-box d-flex justify-content-between align-items-center">
-                    <h6>Reviews</h6>
-                    <Rating
-                      value={product.rating}
-                      text={`${product.numReviews} reviews`}
-                    />
+                    <h5>{`${product.numReviews} reviews`}</h5>
+                    <Rating value={product.rating} />
                   </div>
                   {product.countInStock > 0 ? (
                     <>
-                      <div className="flex-box d-flex justify-content-between align-items-center">
+                      <div className="flex-box d-flex justify-content-between align-items-center ">
                         <h6>Quantitiy</h6>
-                        <select value = {qty} onChange={(e) => setQty(e.target.value)}>
+                        <select
+                          className="border-0 rounded text-light p-1 m-1"
+                          style={{ "background-image":" linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%)" }}
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}>
                           {[...Array(product.countInStock).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
                               {x + 1}
@@ -83,8 +97,9 @@ const SingleProduct = ({ match }) => {
                       </div>
                       <button
                         onClick={AddToCartHandle}
-                        className="round-black-btn">
-                        Add to chart
+                        className="rounded w-100 border-0  text-light p-1 mt-4 mb-3 "
+                        style={{ "background-image": "linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%)" }}>
+                        <h4>Add to chart</h4>
                       </button>
                     </>
                   ) : null}
@@ -92,6 +107,7 @@ const SingleProduct = ({ match }) => {
               </div>
             </div>
           </div>
+
           {/* RATING */}
           <div className="row my-5 ">
             <div className="col-md-6">

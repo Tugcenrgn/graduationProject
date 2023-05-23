@@ -1,8 +1,9 @@
 import React from "react";
 
-const Rating = ({ value, text }) => {
+const Rating = ({ value}) => {
   return (
     <div className="rating ">
+
       <i
         className={
           value >= 1
@@ -46,8 +47,6 @@ const Rating = ({ value, text }) => {
             ? "fas fa-star-half-alt text-warning"
             : "far fa-star text-warning"
         }></i>
-
-      <span>{text && text}</span>
     </div>
   );
 };

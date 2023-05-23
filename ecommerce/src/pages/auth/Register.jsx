@@ -1,33 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import registerVector from "../../assets/registerVector.png";
 import "./auth.scss";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../redux/Actions/UserActions";
+import Message from "../../components/loadingError/Error";
+import Loading from "../../components/loadingError/Loading";
 
 const Register = () => {
+  window.scrollTo(0, 0);
+  const history = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const location = useLocation();
+
+  const dispatch = useDispatch();
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+  console.log("->", redirect);
+
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error, loading, userInfo } = userRegister;
+
+  useEffect(() => {
+    if (userInfo) {
+      history(redirect);
+    }
+  }, [userInfo, history, redirect]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(register(name,email, password));
+  };
+
   return (
     <div>
       <div className="container">
+        {error && <Message variant="alert-danger">{error}</Message>}
+        {loading && <Loading />}
+
         <div className="row d-flex flex-row justify-content-evenly">
           <div className="col col-4 d-flex justify-content-center align-items-center">
-            <form className="login-form align-items-center">
+            <form
+              className="login-form align-items-center"
+              onSubmit={submitHandler}>
               <h3 className="text-center">Register</h3>
               <div className="row">
-                <div className="col col-6">
+                <div className="col">
                   <div className="mb-3">
                     <input
                       type="text"
                       id="disabledTextInput"
                       className="form-control"
-                      placeholder="First Name"
-                    />
-                  </div>
-                </div>
-                <div className="col col-6">
-                  <div className="mb-3">
-                    <input
-                      type="text"
-                      id="disabledTextInput"
-                      className="form-control"
-                      placeholder="Last Name"
+                      placeholder="User Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -35,27 +62,31 @@ const Register = () => {
               <div className="mb-3 row">
                 <div className="col">
                   <input
-                    type="text"
+                    type="email"
                     id="disabledTextInput"
                     className="form-control"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
               <div className="mb-3 row">
                 <div className="col">
                   <input
-                    type="text"
+                    type="password"
                     id="disabledTextInput"
                     className="form-control"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
               </div>
               <div className="mb-3 row">
                 <div className="col">
                   <input
-                    type="text"
+                    type="password"
                     id="disabledTextInput"
                     className="form-control"
                     placeholder="Confirm Password"
@@ -79,6 +110,12 @@ const Register = () => {
               <button type="submit" class="btn btn-primary w-100">
                 Register Now
               </button>
+              <p>
+                <Link to= {redirect ? `/login?redirect=${redirect}`: "/login" }>
+                  I have account
+                  <strong>Login</strong>
+                  </Link>
+              </p>
             </form>
           </div>
           <div className="col col-6">
