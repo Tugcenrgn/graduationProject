@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 
 import {Home, Contact, Register, Login, Reset, Cart, SingleProduct, ProfileScreen, ShippingPage, PaymentPage, PlaceorderPage} from "./pages";
+import Orders from "./pages/ordersPage/Orders";
 //import ProfileScreen from "./pages/profile/ProfileScreen";
 
 console.log("hello world!");
@@ -25,7 +26,7 @@ function App() {
           <Route path="/shipping" element={<ShippingPage/>} />
           <Route path="/payment" element={<PaymentPage/>} />
           <Route path="/placeorder" element={<PlaceorderPage/>} />
-          {/* <Route path="/order" element={<OrderPage/>} /> */}
+          <Route path="/order/:id" element={<Orders/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

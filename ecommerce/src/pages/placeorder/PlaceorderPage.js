@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/loadingError/Error";
-import { Link } from "react-router-dom";
+import { createOrder } from "../../redux/Actions/OrderActions";
+import { Link, useNavigate } from "react-router-dom";
+import { ORDER_CREATE_RESET } from "../../redux/Constants/OrderConstants";
 
 const PlaceorderPage = () => {
   window.scrollTo(0, 0);
@@ -10,9 +12,44 @@ const PlaceorderPage = () => {
   const cart = useSelector((state) => state.cart);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const history = useNavigate();
 
-  const placeorderHandler = (e) => {
-    e.preventDefault();
+  //CAlculate price
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
+
+  cart.itemsPrice = addDecimals(
+    cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  );
+
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 250 ? 0 : 50);
+  cart.totalPrice = (
+    Number(cart.itemsPrice) + Number(cart.shippingPrice)
+  ).toFixed(2);
+
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { order, success, error } = orderCreate;
+
+  useEffect(() => {
+    if (success) {
+      console.log("if success")
+      history(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [history, dispatch, success, order]);
+
+  const placeorderHandler = () => {
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        totalPrice: cart.totalPrice,
+      })
+    );
   };
 
   return (
@@ -132,6 +169,12 @@ const PlaceorderPage = () => {
             <button type="submit" onClick={placeorderHandler}>
               PLACE ORDER
             </button>
+          )}
+
+          {error && (
+            <div className="my-3 col-12">
+              <Message variant="alert-danger">{error}</Message>
+            </div>
           )}
         </div>
       </div>
