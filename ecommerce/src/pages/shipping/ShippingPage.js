@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../../redux/Actions/CartActions";
+import addressLogo from "../../assets/address.png";
+import "./ShippingPage.scss";
+import "../../styles.scss";
 
 const ShippingPage = () => {
   window.scrollTo(0, 0);
@@ -24,9 +27,14 @@ const ShippingPage = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center login-required">
-      <form className="Login col-md-8 col-lg-4 col-11" onSubmit={submitHandler}>
-        <h6>DELİVERY ADDRESS</h6>
+    <div className="shipping-container d-flex justify-content-center align-items-center login-required">
+      <div className="address-logo-div">
+        <img className="address-logo" src={addressLogo} alt="address" />
+      </div>
+      <form
+        className="Login col-md-8 col-lg-4 col-11 form-div d-flex flex-column gap-2 align-items-center"
+        onSubmit={submitHandler}>
+        <h4>DELİVERY ADDRESS</h4>
         <input
           type="text"
           placeholder="Enter address"
@@ -55,7 +63,7 @@ const ShippingPage = () => {
           required
           onChange={(e) => setCountry(e.target.value)}
         />
-        <button type="submit">Continue</button>
+        <button className="btn btn-continue" type="submit">Continue</button>
       </form>
     </div>
   );

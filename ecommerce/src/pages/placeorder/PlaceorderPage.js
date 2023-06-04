@@ -4,6 +4,7 @@ import Message from "../../components/loadingError/Error";
 import { createOrder } from "../../redux/Actions/OrderActions";
 import { Link, useNavigate } from "react-router-dom";
 import { ORDER_CREATE_RESET } from "../../redux/Constants/OrderConstants";
+import "./PlaceorderPage.scss";
 
 const PlaceorderPage = () => {
   window.scrollTo(0, 0);
@@ -33,7 +34,7 @@ const PlaceorderPage = () => {
 
   useEffect(() => {
     if (success) {
-      console.log("if success")
+      console.log("if success");
       history(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });
     }
@@ -82,7 +83,7 @@ const PlaceorderPage = () => {
             </div>
             <div className="col-md-8 center">
               <h5>
-                <strong>Orfer Info</strong>
+                <strong>Order Info</strong>
               </h5>
               <p>Shipping: {cart.shippingAddress.country}</p>
               <p>Payment method: {cart.paymentMethod}</p>
@@ -112,28 +113,30 @@ const PlaceorderPage = () => {
       </div>
 
       <div className="row order-products justify-content-between">
-        <div className="col-lg-8">
+        <div className="col-lg-8 products">
           {cart.cartItems.length === 0 ? (
             <Message variant="alert-info mt-5">Your cart is empty</Message>
           ) : (
             <>
               {cart.cartItems.map((item, index) => (
                 <div className="order-product row" key={index}>
-                  <div className="col-md-3 col-6">
-                    <img className="w-50" src={item.image} alt={item.name} />
+                  <div className="col-md-3 col-6  product-items">
+                    <img className="w-50 " src={item.image} alt={item.name} />
                   </div>
-                  <div classNasme="col-md-5 col-6 d-flex align-items-center">
-                    <Link to={`/products/${item.product}`}>
-                      <h6>{item.name}</h6>
+                  <div className="col-md-3 col-6  product-items">
+                    <Link
+                      className="product-name"
+                      to={`/products/${item.product}`}>
+                      <h3>{item.name}</h3>
                     </Link>
                   </div>
-                  <div className="mt-3 mt-md-0 col-md-2 col-6 d-flex align-items-center">
-                    <h4>QUANTITY</h4>
-                    <h6>{item.qty}</h6>
+                  <div className="mt-3 mt-md-0 col-md-3 col-6 product-items ">
+                    <h6>QUANTITY</h6>
+                    <h4>{item.qty}</h4>
                   </div>
-                  <div className="mt-3 mt-md-0 col-md-2 col-6 d-flex align-items-center">
-                    <h4>SUBTOTAL</h4>
-                    <h6>{item.qty * item.price}TL</h6>
+                  <div className="badge mt-3 mt-md-0 col-md-3 col-6 product-items  d-flex justify-content-center align-center">
+                    <h6>SUBTOTAL</h6>
+                    <h4>{item.qty * item.price}TL</h4>
                   </div>
                 </div>
               ))}
@@ -142,8 +145,8 @@ const PlaceorderPage = () => {
         </div>
 
         {/* total */}
-        <div className="col-lg-3 d-flex align-items-end flex-column mt-5">
-          <table className="table table-bordered">
+        <div className="total-table col-lg-3 d-flex align-items-end flex-column ">
+          <table className="table">
             <tbody>
               <tr>
                 <td>
@@ -166,7 +169,10 @@ const PlaceorderPage = () => {
             </tbody>
           </table>
           {cart.cartItems.length === 0 ? null : (
-            <button type="submit" onClick={placeorderHandler}>
+            <button
+              className="button"
+              type="submit"
+              onClick={placeorderHandler}>
               PLACE ORDER
             </button>
           )}

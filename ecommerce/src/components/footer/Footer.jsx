@@ -1,12 +1,12 @@
 import React from "react";
-
+import "./Footer.scss";
 //get the current year
 const date = new Date();
 const year = date.getFullYear();
 
 const Footer = () => {
   return (
-    <div class="text-center text-lg-start bg-dark text-light">
+    <div class="footer text-center text-lg-start bg-dark text-light">
       <section class="">
         <div class="container text-center text-md-start mt-5 border-top">
           <div class="row mt-3">

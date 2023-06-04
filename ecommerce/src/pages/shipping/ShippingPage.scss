@@ -1,0 +1,75 @@
+@import '../../styles.scss';
+
+.shipping-container {
+  position: relative;
+}
+.address-logo-div {
+  position: absolute;
+  background-color: white;
+  padding: 1em;
+  border-radius: 100%;
+  right: 450px;
+  top: 50px;
+  .address-logo {
+    width: 100px;
+  }
+}
+
+.form-div {
+  color: white;
+  background-color: $color-gray;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 30px;
+  input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.534);
+    width: 70%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    color: white;
+  }
+
+}
+
+
+.btn-continue{
+  margin: 10px;
+  padding: 10px 20px;
+  min-height: 65px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 500;
+  font-size: 0.9em;
+  box-shadow: 0px 0px 14px -7px $color-lightOrange;
+  background-image: linear-gradient(45deg, $color-orange 0%, $color-lightOrange 51%, $color-orange  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-continue:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-continue:active {
+  transform: scale(0.95);
+}
+
+
+@media only screen and (max-width: 760px) {
+  .address-logo-div {
+    display: none;
+  }
+}

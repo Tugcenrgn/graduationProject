@@ -18,7 +18,7 @@ const Header = () => {
    }
 
   return (
-    <div className="container border-bottom">
+    <div className="border-bottom">
       <nav class="navbar navbar-expand-lg bg-body-tertiar">
         <div class="nav-div container-fluid ">
           <a class="navbar-brand" href="/">
@@ -107,13 +107,6 @@ const Header = () => {
                     </div>
                   </div>
                 )}
-                {/* <Link class="nav-item nav-link" to="/login">
-                  Login
-                </Link>
-                <Link class="nav-item nav-link" to="/register">
-                  Register
-                </Link> */}
-
                 <Link class="nav-item nav-link d-flex cart-link" to="/cart">
                   <img src={cart} class="shopping-cart" alt="cart" />
                   <p class="cart-number">{cartItems.length}</p>
@@ -123,37 +116,6 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      {/* <nav class="navbar navbar-expand-lg bg-body-tertiar">
-        <div class="nav-div container-fluid ">
-          <div class="navbar-nav m-auto mb-2 mb-lg-0  w-100">
-            <span class="navbar-nav w-100">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0  d-flex w-100 justify-content-evenly">
-                <li class="nav-item">
-                  <Link className="nav-link">Woman</Link>
-                </li>
-                <li class="nav-item">
-                  <Link className="nav-link">Man</Link>
-                </li>
-                <li class="nav-item">
-                  <Link className="nav-link">Mother&kid</Link>
-                </li>
-                <li class="nav-item">
-                  <Link className="nav-link">Home</Link>
-                </li>
-                <li class="nav-item">
-                  <Link className="nav-link">Supermarket</Link>
-                </li>
-                <li class="nav-item">
-                  <Link className="nav-link">Shose</Link>
-                </li>
-                <li class="nav-item">
-                  <Link className="nav-link">Electronic</Link>
-                </li>
-              </ul>
-            </span>
-          </div>
-        </div>
-      </nav> */}
     </div>
   );
 };

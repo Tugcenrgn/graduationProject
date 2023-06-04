@@ -1,0 +1,131 @@
+@import "../../styles.scss";
+
+.order-detail {
+  color: white;
+  background-color: #a7e3ff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  align-items: center;
+  font-size: 16px;
+
+  strong {
+    width: 300px;
+    font-size: 22px;
+    border-bottom: 2px solid $color-gray;
+    color: white;
+  }
+
+  .order-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: $color-orange;
+    color: white;
+    font-size: 28px;
+  }
+
+  .center {
+    align-self: center;
+    color: $color-darkGray;
+    font-weight: lighter;
+  }
+}
+
+.products {
+  margin: 10px;
+
+  .order-product {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+    align-items: center;
+
+    .product-name {
+      text-decoration: none;
+      color: $color-darkGray;
+    }
+
+    .product-items {
+      display: flex;
+      flex-direction: row;
+      justify-content: baseline;
+      align-items: baseline;
+      border-radius: 20px;
+      gap: 20px;
+      color: $color-orange;
+
+      h6 {
+        font-size: 12px;
+        color: white;
+      }
+    }
+  }
+}
+
+.total-table {
+  height: 100%;
+  padding: 30px;
+  background-color: $color-darkGray;
+  border-radius: 20px;
+
+  .table {
+    th,
+    td {
+      border-bottom: 1px solid $color-lightGray;
+      color: white;
+      padding: 15px;
+    }
+    strong {
+      font-size: 18px;
+    }
+  }
+}
+
+.button {
+  margin: auto;
+  margin-top: 10px;
+  padding: 4px 10px;
+  width: 80%;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: bold;
+  font-size: 1em;
+  box-shadow: 0px 0px 14px -7px $color-lightOrange;
+  background-image: linear-gradient(
+    45deg,
+    $color-orange 0%,
+    $color-lightOrange 51%,
+    $color-orange 100%
+  );
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.badge{
+    background-color: aqua;
+    background-image: linear-gradient(45deg, $color-darkGray 0%, $color-gray 51%, $color-lightGray 100%);
+}
