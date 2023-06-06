@@ -3,8 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 
-import {Home, Contact, Register, Login, Reset, Cart, SingleProduct, ProfileScreen, ShippingPage, PaymentPage, PlaceorderPage} from "./pages";
-import Orders from "./pages/ordersPage/Orders";
+import {Home, Contact, Register, Login, Reset, Cart, SingleProduct, ProfileScreen, ShippingPage, PaymentPage, PlaceorderPage, Orders} from "./pages";
 //import ProfileScreen from "./pages/profile/ProfileScreen";
 
 console.log("hello world!");

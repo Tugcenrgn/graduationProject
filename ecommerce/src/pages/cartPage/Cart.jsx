@@ -25,7 +25,6 @@ const Cart = ({ match }) => {
   const checkOutHandler = () => {
     history(
     `/login?redirect=/shipping`);
-    console.log("hollo")
   }
 
   const removeFromCartHandle = (id) => {

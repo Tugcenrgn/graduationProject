@@ -9,3 +9,4 @@ export {default as ProfileScreen} from "./profile/ProfileScreen";
 export {default as ShippingPage} from "./shipping/ShippingPage";
 export {default as PaymentPage} from "./payment/PaymentPage";
 export {default as PlaceorderPage} from "./placeorder/PlaceorderPage";
+export {default as Orders} from "./ordersPage/Orders";

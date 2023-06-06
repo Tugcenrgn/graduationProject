@@ -2,7 +2,12 @@
 
 .order-detail {
   color: white;
-  background-color: #a7e3ff;
+  background-image: linear-gradient(
+    45deg,
+    $color-blue 0%,
+    $color-lightBlue 51%,
+    $color-blue 100%
+  );
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px;
@@ -32,7 +37,7 @@
   .center {
     align-self: center;
     color: $color-darkGray;
-    font-weight: lighter;
+    
   }
 }
 
@@ -44,6 +49,7 @@
     margin-bottom: 15px;
     padding: 10px;
     align-items: center;
+   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
 
     .product-name {
       text-decoration: none;
@@ -70,7 +76,12 @@
 .total-table {
   height: 100%;
   padding: 30px;
-  background-color: $color-darkGray;
+  background-image: linear-gradient(
+    45deg,
+    $color-darkGray 10%,
+    $color-gray 51%,
+    $color-darkGray 80%
+  );
   border-radius: 20px;
 
   .table {

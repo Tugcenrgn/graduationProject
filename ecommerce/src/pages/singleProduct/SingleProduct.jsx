@@ -69,9 +69,7 @@ const SingleProduct = ({ match }) => {
                       </h6>
                     ) : (
                       <h6>
-                        <span class="badge text-light">
-                          out of stock
-                        </span>
+                        <span class="badge text-light">out of stock</span>
                       </h6>
                     )}
                   </div>
@@ -84,8 +82,8 @@ const SingleProduct = ({ match }) => {
                       <div className="flex-box d-flex justify-content-between align-items-center ">
                         <h6>Quantitiy</h6>
                         <select
-                          className="border-0 rounded text-light p-1 m-1"
-                          style={{ "background-image":" linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%)" }}
+                          className="border-0 rounded-5 text-light  p-1 m-1"
+                          style={{ "background-color": "#454545" }}
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}>
                           {[...Array(product.countInStock).keys()].map((x) => (
@@ -98,7 +96,10 @@ const SingleProduct = ({ match }) => {
                       <button
                         onClick={AddToCartHandle}
                         className="rounded w-100 border-0  text-light p-1 mt-4 mb-3 "
-                        style={{ "background-image": "linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%)" }}>
+                        style={{
+                          "background-image":
+                            "linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%)",
+                        }}>
                         <h4>Add to chart</h4>
                       </button>
                     </>
@@ -110,8 +111,8 @@ const SingleProduct = ({ match }) => {
 
           {/* RATING */}
           <div className="row my-5 ">
-            <div className="col-md-6">
-              <h6 className="mb-3">REVIEWS</h6>
+            <div className="col-12 col-md-8">
+              <h5 className="mb-5 mt-1">REVIEWS</h5>
               <Message variant={"alert-info mt-3"}>No reviews</Message>
               <div className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded">
                 <strong>Admin Doe</strong>
@@ -124,7 +125,7 @@ const SingleProduct = ({ match }) => {
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
+            <div className="col-12 col-md-4">
               <h6>Write a customer review</h6>
               <div className="my-4"></div>
 

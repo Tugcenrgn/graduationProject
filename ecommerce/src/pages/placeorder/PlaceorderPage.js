@@ -15,7 +15,7 @@ const PlaceorderPage = () => {
   const { userInfo } = userLogin;
   const history = useNavigate();
 
-  //CAlculate price
+  //Calculate price
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
@@ -51,6 +51,7 @@ const PlaceorderPage = () => {
         totalPrice: cart.totalPrice,
       })
     );
+
   };
 
   return (
@@ -119,7 +120,7 @@ const PlaceorderPage = () => {
           ) : (
             <>
               {cart.cartItems.map((item, index) => (
-                <div className="order-product row" key={index}>
+                <div className="order-product row rounded-3" key={index}>
                   <div className="col-md-3 col-6  product-items">
                     <img className="w-50 " src={item.image} alt={item.name} />
                   </div>
