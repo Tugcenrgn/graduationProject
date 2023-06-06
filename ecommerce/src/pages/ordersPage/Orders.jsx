@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Orders.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderDetails } from "../../redux/Actions/OrderActions";
+import { getOrderDetails, payOrder } from "../../redux/Actions/OrderActions";
 import Loading from "../../components/loadingError/Loading";
 import Message from "../../components/loadingError/Error";
 import moment from "moment";
 
-const Orders = ({ match }) => {
+const  Orders = ({ match }) => {
   window.scrollTo(0, 0);
-  const orderId = match.params.id;
+  const orderId = useParams().id;
+  // const orderId = match.params.id;
   const dispatch = useDispatch();
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
@@ -27,6 +28,13 @@ const Orders = ({ match }) => {
   useEffect(() => {
     dispatch(getOrderDetails(orderId));
   }, [dispatch, orderId]);
+
+
+  const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult);
+    dispatch(payOrder(orderId, paymentResult));
+    // order.isPaid = true;
+  };
 
   return (
     <>
@@ -134,30 +142,34 @@ const Orders = ({ match }) => {
                 ) : (
                   <>
                     {order.orderItems.map((item, index) => {
-                      <div className="order-product row rounded-3" key={index}>
-                        <div className="col-md-3 col-6  product-items">
-                          <img
-                            className="w-50 "
-                            src={item.image}
-                            alt={item.name}
-                          />
+                      return (
+                        <div
+                          className="order-product row rounded-3"
+                          key={index}>
+                          <div className="col-md-3 col-6  product-items">
+                            <img
+                              className="w-50 "
+                              src={item.image}
+                              alt={item.name}
+                            />
+                          </div>
+                          <div className="col-md-3 col-6  product-items">
+                            <Link
+                              className="product-name"
+                              to={`/products/${item.product}`}>
+                              <h3>{item.name}</h3>
+                            </Link>
+                          </div>
+                          <div className="mt-3 mt-md-0 col-md-3 col-6 product-items ">
+                            <h6>QUANTITY</h6>
+                            <h4>{item.qty}</h4>
+                          </div>
+                          <div className="badge mt-3 mt-md-0 col-md-3 col-6 product-items  d-flex justify-content-center align-center">
+                            <h6>SUBTOTAL</h6>
+                            <h4>{item.qty * item.price}TL</h4>
+                          </div>
                         </div>
-                        <div className="col-md-3 col-6  product-items">
-                          <Link
-                            className="product-name"
-                            to={`/products/${item.product}`}>
-                            <h3>{item.name}</h3>
-                          </Link>
-                        </div>
-                        <div className="mt-3 mt-md-0 col-md-3 col-6 product-items ">
-                          <h6>QUANTITY</h6>
-                          <h4>{item.qty}</h4>
-                        </div>
-                        <div className="badge mt-3 mt-md-0 col-md-3 col-6 product-items  d-flex justify-content-center align-center">
-                          <h6>SUBTOTAL</h6>
-                          <h4>{item.qty * item.price}TL</h4>
-                        </div>
-                      </div>;
+                      );
                     })}
                   </>
                 )}
@@ -186,7 +198,7 @@ const Orders = ({ match }) => {
                     </tr>
                   </tbody>
                 </table>
-                <div className="col-12">PayPalButton</div>
+                <button className="col-12" type="btn" onClick={successPaymentHandler}>PayPalButton</button>
               </div>
             </div>
           </>
