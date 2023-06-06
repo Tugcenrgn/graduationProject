@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { listProductDetails } from "../../redux/Actions/ProductActions";
+import {
+  createProductReview,
+  listProductDetails,
+} from "../../redux/Actions/ProductActions";
 import Loading from "../../components/loadingError/Loading";
 import Message from "../../components/loadingError/Error";
 import Rating from "../../components/rating/Rating";
 import { createBrowserHistory } from "history";
 import Cart from "../cartPage/Cart";
+import moment from "moment";
+
+import {
+  PRODUCT_CREATE_REVIEW_REQUEST,
+  PRODUCT_CREATE_REVIEW_RESET,
+} from "../../redux/Constants/ProductConstants";
 
 const SingleProduct = ({ match }) => {
   const [qty, setQty] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+
   const dispatch = useDispatch();
   const productId = useParams().id;
   const history = useNavigate();
@@ -17,14 +29,40 @@ const SingleProduct = ({ match }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const productReviewCreate = useSelector((state) => state.productReviewCreate);
+  const {
+    loading: loadingCreateReview,
+    error: errorCreateReview,
+    success: successCreateReview,
+  } = productReviewCreate;
+
   useEffect(() => {
+    if (successCreateReview) {
+      alert("Review submitted");
+      setRating(0);
+      setComment("");
+      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+    }
     dispatch(listProductDetails(productId));
-  }, [dispatch, productId]);
+  }, [dispatch, productId, successCreateReview]);
 
   const AddToCartHandle = (e) => {
     e.preventDefault();
     history(`/cart/${productId}?qty=${qty}`);
     console.log("eklendi");
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      createProductReview(productId, {
+        rating,
+        comment,
+      })
+    );
   };
 
   return (
@@ -113,65 +151,82 @@ const SingleProduct = ({ match }) => {
           <div className="row my-5 ">
             <div className="col-12 col-md-8">
               <h5 className="mb-5 mt-1">REVIEWS</h5>
-              <Message variant={"alert-info mt-3"}>No reviews</Message>
-              <div className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded">
-                <strong>Admin Doe</strong>
-                {/* <Rating /> */}
-                <span>Jan 12 2022</span>
-                <div className="alert alert-info mt-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Alias, cumque? Sapiente officiis explicabo odio deleniti
-                  corrupti aperiam, nulla possimus. Ad!
+              {product.reviews.length === 0 && (
+                <Message variant={"alert-info mt-3"}>No reviews</Message>
+              )}
+
+              {product.reviews.map((review) => (
+                <div
+                  key={review._id}
+                  className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded">
+                  <strong>{review.name}</strong>
+                  <Rating value={review.rating} />
+                  <span>{moment(review.createdAt).calendar()}</span>
+                  <div className="alert alert-info mt-3">{review.comment}</div>
                 </div>
-              </div>
+              ))}
             </div>
             <div className="col-12 col-md-4">
               <h6>Write a customer review</h6>
-              <div className="my-4"></div>
-
-              <form>
-                <div className="my-4">
-                  <strong>Rating</strong>
-                  <select className="col-12 bg-light p-3 mt-2 border-0 rounded">
-                    <option value="">...</option>
-                    <option value="1" select="true">
-                      1
-                    </option>
-                    <option value="2" select="true">
-                      2
-                    </option>
-                    <option value="3" select="true">
-                      3
-                    </option>
-                    <option value="4" select="true">
-                      4
-                    </option>
-                    <option value="5" select="true">
-                      5
-                    </option>
-                  </select>
-                </div>
-                <div className="my-4">
-                  <strong>Comment</strong>
-                  <textarea
-                    row="3"
-                    className="col-12 bg-light p-3 mt-2 border-0 rounded"></textarea>
-                </div>
-                <div className="my-3">
-                  <button className="col-12 bg-black border-0 p-3 rounded text-white">
-                    SUBMİT
-                  </button>
-                </div>
-              </form>
-              <div className="my-3">
-                <Message variant={"alert-warning"}>
-                  Please{" "}
-                  <Link to="/login">
-                    "<strong>Login</strong>"
-                  </Link>{" "}
-                  to write a review{" "}
-                </Message>
+              <div className="my-4">
+                {loadingCreateReview && <Loading />}
+                {errorCreateReview && (
+                  <Message variant="alert-danger">{errorCreateReview}</Message>
+                )}
               </div>
+              {userInfo ? (
+                <form onSubmit={submitHandler}>
+                  <div className="my-4">
+                    <strong>Rating</strong>
+                    <select
+                      value={rating}
+                      onChange={(e) => setRating(e.target.value)}
+                      className="col-12 bg-light p-3 mt-2 border-0 rounded">
+                      <option value="">...</option>
+                      <option value="1" select="true">
+                        1
+                      </option>
+                      <option value="2" select="true">
+                        2
+                      </option>
+                      <option value="3" select="true">
+                        3
+                      </option>
+                      <option value="4" select="true">
+                        4
+                      </option>
+                      <option value="5" select="true">
+                        5
+                      </option>
+                    </select>
+                  </div>
+                  <div className="my-4">
+                    <strong>Comment</strong>
+                    <textarea
+                      row="3"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                      className="col-12 bg-light p-3 mt-2 border-0 rounded"></textarea>
+                  </div>
+                  <div className="my-3">
+                    <button
+                      disabled={loadingCreateReview}
+                      className="col-12 bg-black border-0 p-3 rounded text-white">
+                      SUBMİT
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="my-3">
+                  <Message variant={"alert-warning"}>
+                    Please{" "}
+                    <Link to="/login">
+                      "<strong>Login</strong>"
+                    </Link>{" "}
+                    to write a review{" "}
+                  </Message>
+                </div>
+              )}
             </div>
           </div>
         </>
