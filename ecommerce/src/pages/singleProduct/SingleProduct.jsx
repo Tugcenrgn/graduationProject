@@ -150,7 +150,7 @@ const SingleProduct = ({ match }) => {
           {/* RATING */}
           <div className="row my-5 ">
             <div className="col-12 col-md-8">
-              <h5 className="mb-5 mt-1">REVIEWS</h5>
+              <h5 className="mb-5 mt-1">DEĞERLENDİRMELER</h5>
               {product.reviews.length === 0 && (
                 <Message variant={"alert-info mt-3"}>Değerlendirme Yok</Message>
               )}

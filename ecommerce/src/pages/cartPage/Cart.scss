@@ -1,14 +1,16 @@
-@import '../../styles.scss';
+@import "../../styles.scss";
 
-.cart-item{
-    box-shadow: rgba(255, 131, 131, 0.09) 0px 2px 13px, rgba(255, 194, 194, 0.09) 0px 4px 2px, rgba(255, 196, 196, 0.09) 0px 3px 6px, rgba(255, 199, 199, 0.09) 0px 32px 4px, rgba(255, 218, 218, 0.062) 0px 12px 6px;
-    background-color: white;
-    border-radius: 20px;
-    max-height: 150px;
+.cart-item {
+  box-shadow: rgba(255, 131, 131, 0.09) 0px 2px 13px,
+    rgba(255, 194, 194, 0.09) 0px 4px 2px, rgba(255, 196, 196, 0.09) 0px 3px 6px,
+    rgba(255, 199, 199, 0.09) 0px 32px 4px,
+    rgba(255, 218, 218, 0.062) 0px 12px 6px;
+  background-color: white;
+  border-radius: 20px;
+  max-height: 150px;
 }
 
-
-.button{
+.button {
   margin: 10px;
   padding: 10px 20px;
   min-height: 65px;
@@ -23,7 +25,12 @@
   font-weight: 500;
   font-size: 0.9em;
   box-shadow: 0px 0px 14px -7px $color-orange;
-  background-image: linear-gradient(45deg, $color-orange 0%, $color-lightOrange  51%, $color-orange  100%);
+  background-image: linear-gradient(
+    45deg,
+    $color-orange 0%,
+    $color-lightOrange 51%,
+    $color-orange 100%
+  );
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -41,21 +48,33 @@
   transform: scale(0.95);
 }
 
-.badge{
-  background-image: linear-gradient(45deg, #000000 0%, $color-gray 51%, #000000  100%);
+.badge {
+  background-image: linear-gradient(
+    45deg,
+    #000000 0%,
+    $color-gray 51%,
+    #000000 100%
+  );
 }
-
-
 
 @media only screen and (min-width: 600px) {
   .cart-item {
     max-height: 200px;
   }
 
-  .button{
+  .button {
     padding: 15px 30px;
     font-weight: 700;
   }
+}
+@media only screen and (max-width: 740px) {
+  .mobile-col {
+    flex-direction: column;
+    height: 100%;
+  }
 
-  
+  .cart-item{
+    height: 400px;
+    padding: 15px 30px;
+  }
 }

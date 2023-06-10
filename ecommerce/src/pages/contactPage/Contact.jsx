@@ -10,12 +10,14 @@ const Contact = () => {
         <div
           className=" col-12 col-md-4 rounded-start-4 d-flex flex-column align-items-center justify-content-center p-4"
           style={{ backgroundColor: "#1a1a1a" }}>
-          <h5 className="text-align-start text-secondary w-100 mute">
-            Size Nasıl Yardımcı Olabiliriz?
-          </h5>
-          <h3 className="text-align-start text-light w-100">
-            Bizimle İletişime Geçin
-          </h3>
+          <div className="d-flex flex-column align-items-start w-100 ms-4">
+            <h5 className="text-align-start text-secondary w-100 mute">
+              Size Nasıl Yardımcı Olabiliriz?
+            </h5>
+            <h3 className="text-align-start text-light w-100">
+              Bizimle İletişime Geçin
+            </h3>
+          </div>
           <form className="me-4">
             <div className="row">
               <div className="col-6 ps-0 form-group">
@@ -54,6 +56,13 @@ const Contact = () => {
                   placeholder="Mesajınız"
                   id="exampleFormControlTextarea1"
                   rows="3"></textarea>
+              </div>
+            </div>
+            <div className="row form-group">
+              <div className="col-12 p-0 ps-2 pb-3">
+                <button className="btn btn-info m-0 w-100 " type="button">
+                  Gönder
+                </button>
               </div>
             </div>
           </form>

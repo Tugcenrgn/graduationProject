@@ -12,14 +12,15 @@
     height: 80%;
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    padding: 15%;
-    margin: 0;
+    padding: 10%;
+    padding-bottom: 140px;
     background-color: white;
 }
 
 @media only screen and (max-width: 768px){
     .login-form{
         padding: 10%;
+        padding-left: 5%;
         margin-top: 20%;
         height: 100%;
     }

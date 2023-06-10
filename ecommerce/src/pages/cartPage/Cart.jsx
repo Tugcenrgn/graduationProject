@@ -71,7 +71,7 @@ const Cart = ({ match }) => {
                   {/* d-none d-sm-block */}
                   <i className="fas fa-times"></i>
                 </div>
-                <div className="row w-100 ">
+                <div className="row w-100 mobile-col ">
                   <div className="cart-image col-md-2 col-5  d-flex  h-50 justify-content-center ">
                     <img
                       className=" img-fluid rounded"
@@ -82,7 +82,7 @@ const Cart = ({ match }) => {
                 
                   <div className="cart-text col-md-6 col-3 d-flex align-items-center  h-50 ">
                     <Link
-                      className="text-decoration-none"
+                      className="text-decoration-none cart-text"
                       to={`/products/${item.product}`}>
                       <h4 className="text-dark ">{item.name}</h4>
                     </Link>

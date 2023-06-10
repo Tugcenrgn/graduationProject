@@ -44,17 +44,17 @@ const Login = () => {
           <div className="col col-lg-6 d-none d-md-block">
             <img className="auth-vector" src={loginVector} alt="loading fail" />
           </div>
-          <div className="col col-10 col-lg-4 d-flex justify-content-center align-items-center">
+          <div className="col col-12 col-lg-4 d-flex justify-content-center align-items-center">
             <form
               className="login-form align-items-center"
               onSubmit={submitHandler}>
-              <h3>LOGIN</h3>
+              <h3>Giriş Yap</h3>
               <div class="mb-3">
                 <input
                   type="email"
                   id="disabledTex tInput"
                   class="form-control"
-                  placeholder="email"
+                  placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -64,7 +64,7 @@ const Login = () => {
                   type="password"
                   id="disabledTextInput"
                   class="form-control"
-                  placeholder="password"
+                  placeholder="Şifre"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -78,12 +78,12 @@ const Login = () => {
                     id="disabledFieldsetCheck"
                   />
                   <label class="form-check-label" for="disabledFieldsetCheck">
-                    Remember me
+                    Beni hatırla
                   </label>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">
-                LOGIN
+                Giriş Yap
               </button>
               <p>
                 <Link
@@ -91,7 +91,7 @@ const Login = () => {
                   to={
                     redirect ? `/register?redirect=${redirect}` : "/register"
                   }>
-                  Create Account
+                  Üye Ol
                 </Link>
               </p>
             </form>

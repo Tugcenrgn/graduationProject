@@ -4,9 +4,7 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 
 import {Home, Contact, AboutUs, Register, Login, Reset, Cart, SingleProduct, ProfileScreen, ShippingPage, PaymentPage, PlaceorderPage, Orders} from "./pages";
-//import ProfileScreen from "./pages/profile/ProfileScreen";
 
-console.log("hello world!");
 
 function App() {
   return (

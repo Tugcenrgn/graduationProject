@@ -40,11 +40,11 @@ const Register = () => {
         {loading && <Loading />}
 
         <div className="row d-flex flex-row justify-content-center">
-          <div className="col col-10 col-lg-4  d-flex justify-content-center align-items-center">
+          <div className="col col-12 col-lg-4  d-flex justify-content-center align-items-center">
             <form
               className="login-form align-items-center"
               onSubmit={submitHandler}>
-              <h3 className="text-center">Register</h3>
+              <h3 className="text-center">Üye Ol</h3>
               <div className="row">
                 <div className="col">
                   <div className="mb-3">
@@ -52,7 +52,7 @@ const Register = () => {
                       type="text"
                       id="disabledTextInput"
                       className="form-control"
-                      placeholder="User Name"
+                      placeholder="Kullanıcı Adı"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
@@ -77,7 +77,7 @@ const Register = () => {
                     type="password"
                     id="disabledTextInput"
                     className="form-control"
-                    placeholder="Password"
+                    placeholder="Şifre"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -89,7 +89,7 @@ const Register = () => {
                     type="password"
                     id="disabledTextInput"
                     className="form-control"
-                    placeholder="Confirm Password"
+                    placeholder="Şifre Onay"
                   />
                 </div>
               </div>
@@ -112,8 +112,9 @@ const Register = () => {
               </button>
               <p>
                 <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-                  I have account
-                  <strong>Login</strong>
+                  Zaten hesabım var
+                  <br />
+                  <strong> Giriş yap</strong>
                 </Link>
               </p>
             </form>

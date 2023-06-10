@@ -5,7 +5,7 @@ import user2 from "../../assets/userProfileMale.png";
 
 import "./Contact.scss";
 
-const Contact = () => {
+const AboutUs = () => {
   return (
     <>
       <div className="row mt-4 mb-5 justify-content-center">
@@ -75,4 +75,4 @@ const Contact = () => {
     </>
   );
 };
-export default Contact;
+export default AboutUs;
