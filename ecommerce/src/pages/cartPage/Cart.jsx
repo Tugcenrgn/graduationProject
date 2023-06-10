@@ -39,7 +39,7 @@ const Cart = ({ match }) => {
       <div className="container">
         {cartItems.length === 0 ? (
           <div className="alert alert-info text-center mt-3">
-            Your cart is empty.
+            SEPETİNİZ BOŞ
             <Link
               className="btn mx-5 px-5 py-3 text-light "
               to="/"
@@ -49,7 +49,7 @@ const Cart = ({ match }) => {
                 "font-weight": "bold",
                 "font-size": ".9em",
               }}>
-              SHOP NOW
+              ŞİMDİ ALIŞVERİŞ YAP
             </Link>
           </div>
         ) : (
@@ -79,18 +79,12 @@ const Cart = ({ match }) => {
                       alt={item.name}
                     />
                   </div>
-                  {/* sm delete icon
-                  <div
-                    onClick={() => removeFromCartHandle(item.product)}
-                    style={{ cursor: "pointer" }}
-                    className="d-block d-sm-none col-1 d-flex remove-button ">
-                    <i className="fas fa-times"></i>
-                  </div> */}
+                
                   <div className="cart-text col-md-6 col-3 d-flex align-items-center  h-50 ">
                     <Link
                       className="text-decoration-none"
                       to={`/products/${item.product}`}>
-                      <h2 className="text-dark ">{item.name}</h2>
+                      <h4 className="text-dark ">{item.name}</h4>
                     </Link>
                   </div>
                   <div className="cart-price  mt-md-0 col-2 d-flex justify-content-end align-items-center   h-50 ">
@@ -119,20 +113,20 @@ const Cart = ({ match }) => {
             {/*End of cart items*/}
             <div className="total mt-4 d-flex justify-content-end">
               <h2>
-                <span className="badge sub">total: {total}TL</span>
+                <span className="badge sub">TOPLAM: {total}TL</span>
               </h2>
               
             </div>
             <hr />
             <div className="cart-buttons d-flex align-items-center row">
               <Link to="/" className="col-6 text-decoration-none">
-                <button className="button">Continue to shopping</button>
+                <button className="button">ALIŞVERİŞE DEVAM ET</button>
               </Link>
 
               {total > 0 && (
                 <div className="col-6 d-flex  justify-content-end mt-md-0">
                   <button className="button" onClick={checkOutHandler}>
-                    Checkout
+                    SEPETİ ONAYLA
                   </button>
                 </div>
               )}

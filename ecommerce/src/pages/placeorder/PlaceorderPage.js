@@ -57,16 +57,16 @@ const PlaceorderPage = () => {
   return (
     <div className="container">
       <div className="row order-detail">
-        <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+        <div className="col-lg-4 col-sm-4   mb-lg-4 mb-2 mb-sm-0">
           <div className="row">
-            <div className="col-md-4 center">
+            <div className="col-3 col-md-4 center">
               <div className="alert-success order-box">
                 <i className="fas fa-user"></i>
               </div>
             </div>
-            <div className="col-md-8 center">
+            <div className="col-4 col-md-8 center">
               <h5>
-                <strong>Customer</strong>
+                <strong>MÜŞTERİ</strong>
               </h5>
               <p>{userInfo.name}</p>
               <p>{userInfo.email}</p>
@@ -75,36 +75,36 @@ const PlaceorderPage = () => {
         </div>
 
         {/* 2 */}
-        <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+        <div className="col-lg-4 col-sm-4   mb-lg-4 mb-2 mb-sm-0">
           <div className="row">
-            <div className="col-md-4 center">
+            <div className="col-3 col-md-4 center">
               <div className="alert-success order-box">
                 <i className="fa fa-truck-moving"></i>
               </div>
             </div>
-            <div className="col-md-8 center">
-              <h5>
-                <strong>Order Info</strong>
+            <div className="ınfo col-4 col-md-8 center ">
+              <h5 className="w-100">
+                <strong>SİPARİŞ ÖNİZLEMESİ</strong>
               </h5>
-              <p>Shipping: {cart.shippingAddress.country}</p>
-              <p>Payment method: {cart.paymentMethod}</p>
+              <p>Teslim yeri: {cart.shippingAddress.country}</p>
+              <p>Ödeme yöntemi: {cart.paymentMethod}</p>
             </div>
           </div>
         </div>
         {/* 3 */}
-        <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+        <div className="col-lg-4 col-sm-4   mb-lg-4 mb-2 mb-sm-0">
           <div className="row">
-            <div className="col-md-4 center">
+            <div className="col-3 col-md-4 center">
               <div className="alert-success order-box">
                 <i className="fas fa-map-marker-alt"></i>
               </div>
             </div>
-            <div className="col-md-8 center">
+            <div className="ınfo col-4 col-md-8 center">
               <h5>
-                <strong>Deliver to</strong>
+                <strong>TESLİMAT</strong>
               </h5>
               <p>
-                Address:{cart.shippingAddress.city}, ,{" "}
+                Adres:{cart.shippingAddress.city}, ,{" "}
                 {cart.shippingAddress.address}, ,{" "}
                 {cart.shippingAddress.postalCode}
               </p>
@@ -116,7 +116,7 @@ const PlaceorderPage = () => {
       <div className="row order-products justify-content-between">
         <div className="col-lg-8 products">
           {cart.cartItems.length === 0 ? (
-            <Message variant="alert-info mt-5">Your cart is empty</Message>
+            <Message variant="alert-info mt-5">Sepetiniz Boş</Message>
           ) : (
             <>
               {cart.cartItems.map((item, index) => (
@@ -132,11 +132,11 @@ const PlaceorderPage = () => {
                     </Link>
                   </div>
                   <div className="mt-3 mt-md-0 col-md-3 col-6 product-items ">
-                    <h6>QUANTITY</h6>
+                    <h6>Adet</h6>
                     <h4>{item.qty}</h4>
                   </div>
                   <div className="badge mt-3 mt-md-0 col-md-3 col-6 product-items  d-flex justify-content-center align-center">
-                    <h6>SUBTOTAL</h6>
+                    <h6>TOPLAM</h6>
                     <h4>{item.qty * item.price}TL</h4>
                   </div>
                 </div>
@@ -151,19 +151,19 @@ const PlaceorderPage = () => {
             <tbody>
               <tr>
                 <td>
-                  <strong>Products</strong>
+                  <strong>Ürünler</strong>
                 </td>
                 <td>{cart.itemsPrice}TL</td>
               </tr>
               <tr>
                 <td>
-                  <strong>Shipping</strong>
+                  <strong>Kargo</strong>
                 </td>
                 <td>{cart.shippingPrice}TL</td>
               </tr>
               <tr>
                 <td>
-                  <strong>TOTAL</strong>
+                  <strong>Toplam</strong>
                 </td>
                 <td>{cart.totalPrice}TL</td>
               </tr>
@@ -174,7 +174,7 @@ const PlaceorderPage = () => {
               className="button"
               type="submit"
               onClick={placeorderHandler}>
-              PLACE ORDER
+              DEVAM
             </button>
           )}
 

@@ -6,12 +6,13 @@
 .address-logo-div {
   position: absolute;
   background-color: white;
-  padding: 1em;
+  padding: 1.4em;
   border-radius: 100%;
-  right: 450px;
-  top: 50px;
+  border: 2px solid black;
+  right: 550px;
+  top: 70px;
   .address-logo {
-    width: 100px;
+    width: 150px;
   }
 }
 

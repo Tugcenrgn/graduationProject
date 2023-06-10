@@ -6,16 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../redux/Actions/ProductActions";
 import Loading from "../../components/loadingError/Loading";
 import Message from "../../components/loadingError/Error";
+import { useParams } from "react-router-dom";
 
-const Home = () => {
+const Home = ({match}) => {
   const dispatch = useDispatch();
+
+  const keyword = useParams().keyword; //check out here
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
   useEffect(() => {
-    dispatch(listProduct());
-  }, [dispatch]);
+    dispatch(listProduct(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <div className="container">

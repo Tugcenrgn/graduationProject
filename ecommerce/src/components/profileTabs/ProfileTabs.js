@@ -5,6 +5,7 @@ import Message from "../loadingError/Error";
 import Loading from "../loadingError/Loading";
 import { toast } from "react-toastify";
 import { updateUserProfile } from "../../redux/Actions/UserActions";
+import "./ProfileTabs.scss";
 
 const ProfileTabs = () => {
   const [name, setName] = useState("");
@@ -57,10 +58,14 @@ const ProfileTabs = () => {
       {error && <Message variant="alert-danger">{error}</Message>}
       {loading && <Loading />}
       {updateLoading && <Loading />}
-      <form className="row form-container" onSubmit={submitHandler}>
-        <div className="col-md-6">
+      <form
+        className="row form-container bg-light rounded-4 align-items-center justify-content-center"
+        onSubmit={submitHandler}>
+        <div className="col-12 col-md-5">
           <div className="form">
-            <label for="account-fn">UserName</label>
+            <label for="account-fn" className="form-label">
+              UserName
+            </label>
             <input
               type="text"
               className="form-control"
@@ -71,9 +76,11 @@ const ProfileTabs = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className=" col-12 col-md-5">
           <div className="form">
-            <label htmlFor="account-email">E-mail Address</label>
+            <label htmlFor="account-email" className="form-label">
+              E-mail Address
+            </label>
             <input
               type="email"
               className="form-control"
@@ -84,9 +91,11 @@ const ProfileTabs = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-12 col-md-5">
           <div className="form">
-            <label htmlFor="account-pass">New Password</label>
+            <label htmlFor="account-pass" className="form-label">
+              New Password
+            </label>
             <input
               type="password"
               className="form-control"
@@ -97,9 +106,11 @@ const ProfileTabs = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-12 col-md-5 ">
           <div className="form">
-            <label htmlFor="account-confirm-pass">Confirm Password</label>
+            <label htmlFor="account-confirm-pass" className="form-label">
+              Confirm Password
+            </label>
             <input
               type="password"
               className="form-control"
@@ -110,7 +121,9 @@ const ProfileTabs = () => {
           </div>
         </div>
 
-        <button type="submit">Update Profile</button>
+        <button type="submit" className="btn btn-update">
+          Update Profile
+        </button>
       </form>
     </>
   );

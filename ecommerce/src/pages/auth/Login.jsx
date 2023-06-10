@@ -40,8 +40,8 @@ const Login = () => {
         {error && <Message variant="alert-danger">{error}</Message>}
         {loading && <Loading/>}
 
-        <div class="row  d-flex flex-row justify-content-evenly">
-          <div className="col col-lg-6<  d-none d-md-block">
+        <div class="row  d-flex flex-row justify-content-center">
+          <div className="col col-lg-6 d-none d-md-block">
             <img className="auth-vector" src={loginVector} alt="loading fail" />
           </div>
           <div className="col col-10 col-lg-4 d-flex justify-content-center align-items-center">

@@ -22,6 +22,10 @@
     color: white;
   }
 
+  p{
+    width: 100%;
+  }
+
   .order-box {
     display: flex;
     justify-content: center;
@@ -139,4 +143,50 @@
 .badge{
     background-color: aqua;
     background-image: linear-gradient(45deg, $color-darkGray 0%, $color-gray 51%, $color-lightGray 100%);
+}
+
+
+@media only screen and (max-width: 768px) {
+  .order-detail {
+ display: flex;
+ flex-direction: row;
+ margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  align-items: center;
+  font-size: 16px;
+
+  strong {
+    width: 300px;
+    font-size: 22px;
+    border-bottom: 2px solid $color-gray;
+    color: white;
+  }
+
+  .order-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: $color-orange;
+    color: white;
+    font-size: 28px;
+  }
+
+  .center {
+    color: $color-darkGray;
+  }
+}
+
+.products{
+  margin: 0;
+}
+
+.ınfo{
+    width: 70%;
+  }
 }

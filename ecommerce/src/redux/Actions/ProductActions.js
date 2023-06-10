@@ -13,22 +13,24 @@ import {
 import { logout } from "./UserActions";
 
 //LIST PRODUCTS
-export const listProduct = () => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCT_LIST_REQUEST });
+export const listProduct =
+  (keyword = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/products");
-    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      const { data } = await axios.get(`/api/products?keyword=${keyword}`);
+      dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 //SINGLE PRODUCT
 export const listProductDetails = (id) => async (dispatch) => {
@@ -48,8 +50,6 @@ export const listProductDetails = (id) => async (dispatch) => {
   }
 };
 
-
-
 //PRODUCT REVIEW CREATE
 export const createProductReview =
   (productId, review) => async (dispatch, getState) => {
@@ -66,13 +66,9 @@ export const createProductReview =
         },
       };
 
-      await axios.post(
-        `/api/products/${productId}/review`,
-        review,
-        config
-      );
+      await axios.post(`/api/products/${productId}/review`, review, config);
 
-      dispatch({ type: PRODUCT_CREATE_REVIEW_SUCCESS});
+      dispatch({ type: PRODUCT_CREATE_REVIEW_SUCCESS });
     } catch (error) {
       const message =
         error.response && error.response.data.message

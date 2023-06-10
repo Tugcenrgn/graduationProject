@@ -34,36 +34,36 @@ const ShippingPage = () => {
       <form
         className="Login col-md-8 col-lg-4 col-11 form-div d-flex flex-column gap-2 align-items-center"
         onSubmit={submitHandler}>
-        <h4>DELİVERY ADDRESS</h4>
+        <h4>TESLİMAT ADRESİ</h4>
         <input
           type="text"
-          placeholder="Enter address"
+          placeholder="Adres"
           value={address}
           required
           onChange={(e) => setAddress(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Enter city"
+          placeholder="Şehir"
           value={city}
           required
           onChange={(e) => setCity(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Enter postal code"
+          placeholder="Posta kodu"
           value={postalCode}
           required
           onChange={(e) => setPostalCode(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Enter country"
+          placeholder="Ülke"
           value={country}
           required
           onChange={(e) => setCountry(e.target.value)}
         />
-        <button className="btn btn-continue" type="submit">Continue</button>
+        <button className="btn btn-continue" type="submit">Devam</button>
       </form>
     </div>
   );

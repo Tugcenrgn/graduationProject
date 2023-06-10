@@ -10,3 +10,4 @@ export {default as ShippingPage} from "./shipping/ShippingPage";
 export {default as PaymentPage} from "./payment/PaymentPage";
 export {default as PlaceorderPage} from "./placeorder/PlaceorderPage";
 export {default as Orders} from "./ordersPage/Orders";
+export {default as AboutUs} from "./contactPage/AboutUs";

@@ -92,33 +92,33 @@ const SingleProduct = ({ match }) => {
 
                 <div className="product-count col-lg-7 w-100 ">
                   <div className="flex-box d-flex justify-content-between align-items-center">
-                    <h4>Price</h4>
+                    <h4>Fiyat</h4>
                     <h4>{product.price}TL</h4>
                   </div>
                   <div className="flex-box d-flex justify-content-between align-items-center">
-                    <h4>status</h4>
+                    <h4>stok</h4>
                     {product.countInStock > 0 ? (
                       <h6>
                         <span
                           class="badge text-light"
                           style={{ "background-color": "orange" }}>
-                          In stock
+                          Stokta
                         </span>
                       </h6>
                     ) : (
                       <h6>
-                        <span class="badge text-light">out of stock</span>
+                        <span class="badge text-light">Stokta yok</span>
                       </h6>
                     )}
                   </div>
                   <div className="flex-box d-flex justify-content-between align-items-center">
-                    <h5>{`${product.numReviews} reviews`}</h5>
+                    <h5>{`${product.numReviews} değerlendirme`}</h5>
                     <Rating value={product.rating} />
                   </div>
                   {product.countInStock > 0 ? (
                     <>
                       <div className="flex-box d-flex justify-content-between align-items-center ">
-                        <h6>Quantitiy</h6>
+                        <h6>Adet</h6>
                         <select
                           className="border-0 rounded-5 text-light  p-1 m-1"
                           style={{ "background-color": "#454545" }}
@@ -138,7 +138,7 @@ const SingleProduct = ({ match }) => {
                           "background-image":
                             "linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%)",
                         }}>
-                        <h4>Add to chart</h4>
+                        <h4>SEPETE EKLE</h4>
                       </button>
                     </>
                   ) : null}
@@ -152,7 +152,7 @@ const SingleProduct = ({ match }) => {
             <div className="col-12 col-md-8">
               <h5 className="mb-5 mt-1">REVIEWS</h5>
               {product.reviews.length === 0 && (
-                <Message variant={"alert-info mt-3"}>No reviews</Message>
+                <Message variant={"alert-info mt-3"}>Değerlendirme Yok</Message>
               )}
 
               {product.reviews.map((review) => (
@@ -167,7 +167,7 @@ const SingleProduct = ({ match }) => {
               ))}
             </div>
             <div className="col-12 col-md-4">
-              <h6>Write a customer review</h6>
+              <h6>Ürünü Değerlendir</h6>
               <div className="my-4">
                 {loadingCreateReview && <Loading />}
                 {errorCreateReview && (
@@ -177,7 +177,7 @@ const SingleProduct = ({ match }) => {
               {userInfo ? (
                 <form onSubmit={submitHandler}>
                   <div className="my-4">
-                    <strong>Rating</strong>
+                    <strong>Puan</strong>
                     <select
                       value={rating}
                       onChange={(e) => setRating(e.target.value)}
@@ -201,7 +201,7 @@ const SingleProduct = ({ match }) => {
                     </select>
                   </div>
                   <div className="my-4">
-                    <strong>Comment</strong>
+                    <strong>Yorum</strong>
                     <textarea
                       row="3"
                       value={comment}
@@ -212,18 +212,17 @@ const SingleProduct = ({ match }) => {
                     <button
                       disabled={loadingCreateReview}
                       className="col-12 bg-black border-0 p-3 rounded text-white">
-                      SUBMİT
+                      Gönder
                     </button>
                   </div>
                 </form>
               ) : (
                 <div className="my-3">
                   <Message variant={"alert-warning"}>
-                    Please{" "}
+                    Lütfen değerlenirme yapmak için
                     <Link to="/login">
-                      "<strong>Login</strong>"
-                    </Link>{" "}
-                    to write a review{" "}
+                      "<strong>Giriş Yapınız </strong>"
+                    </Link>
                   </Message>
                 </div>
               )}

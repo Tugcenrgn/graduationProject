@@ -39,8 +39,8 @@ const Register = () => {
         {error && <Message variant="alert-danger">{error}</Message>}
         {loading && <Loading />}
 
-        <div className="row d-flex flex-row justify-content-evenly">
-          <div className="col col-4 d-flex justify-content-center align-items-center">
+        <div className="row d-flex flex-row justify-content-center">
+          <div className="col col-10 col-lg-4  d-flex justify-content-center align-items-center">
             <form
               className="login-form align-items-center"
               onSubmit={submitHandler}>
@@ -111,14 +111,14 @@ const Register = () => {
                 Register Now
               </button>
               <p>
-                <Link to= {redirect ? `/login?redirect=${redirect}`: "/login" }>
+                <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
                   I have account
                   <strong>Login</strong>
-                  </Link>
+                </Link>
               </p>
             </form>
           </div>
-          <div className="col col-6">
+          <div className="col col-6 d-none d-md-block">
             <img
               className="auth-vector"
               src={registerVector}
